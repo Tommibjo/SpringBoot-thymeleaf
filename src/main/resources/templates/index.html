@@ -13,14 +13,14 @@ and open the template in the editor.
         <p></p>
         <ul>
             <li th:each="product : ${list}">
-                <a th:href="@{/}"> <span th:text="${product.product}"/> </a> (<span th:text="${product.details}"/>)
+                <a th:href="${product.product}"> <span th:text="${product.product}"/> </a> (<span th:text="${product.details}"/>)
             </li>
         </ul>
         <p></p>
         <h2>Add products</h2>
         <form th:action="@{/}" method="post">
-            <input type="text" name="product"/>
-            <input type="text" name="details"/>
+           Product: <input type="text" name="product"/>
+           Details: <input type="text" name="details"/>
             <input type="submit" value="Add"/>
         </form>
     </body>

@@ -9,6 +9,7 @@ import ProductPojo.Product;
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,4 +41,15 @@ public class AppController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/{product}")
+    public String details(Model model, @PathVariable String product) {
+
+        for (Product index : this.list) {
+            if(index.getProduct().toLowerCase().equals(product.toLowerCase())){
+                model.addAttribute("product", index);
+            }
+        }
+
+        return "details";
+    }
 }
